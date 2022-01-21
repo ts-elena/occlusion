@@ -1,0 +1,16 @@
+{
+  "name": "detect-window",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "debugger": "electron --inspect-brk=5858"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.13"
+  }
+}
