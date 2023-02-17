@@ -9,12 +9,14 @@ let toastLiftUp = 0;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         height: 500,
-        width: 500
+        width: 500,
+        alwaysOnTop: false
     });
 
     childWindow = new BrowserWindow({
         height: 500,
-        width: 500
+        width: 500,
+        alwaysOnTop: false
     });
 
     mainWindow.loadURL(`file://${__dirname}/mainRenderer.html`);
@@ -23,7 +25,11 @@ app.on('ready', () => {
     mainWindow.on('closed', _ => {
         mainWindow = null;
     })
+    setTimeout(() => childWindow.focus(), 2000);
+    console.log("isFocused child: " + childWindow.isFocused());
 })
+
+
 
 ipcMain.on('input-event', (event) => {
     console.log('ipc-received');
@@ -57,7 +63,7 @@ ipcMain.on('input-event', (event) => {
             inputBottomMargineDp,
             inputHeightDp,
             appBottomRight
-        } = getPositionParameters(windowWithElement, screenUsed, 10, 300, 55);
+        } = getPositionParameters(windowWithElement, screenUsed, 10, 20, 55);
 
         const isOccluding = isToastOccluding(excludeInputMargineBottomRight, toastWinY, excludeInputMargineTopRight, toastWinX);
 
